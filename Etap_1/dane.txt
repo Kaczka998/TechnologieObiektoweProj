@@ -1,0 +1,14 @@
+Skład zespołu:
+Szwajkowski Daniel, email, grupa
+Jurek Kacper, email, grupa
+Wolszczak Weronika, email, grupa
+
+* temat projektu,
+
+* spis technologii, które będą używane (systemów, języków programowania, najważniejszych bibliotek, frameworków, itp.)
+
+* realistyczny harmonogram pracy wraz z listą funkcjonalności, które zostaną zaimplementowane,
+
+* podział prac w zespole,
+
+* temat projektu z przedmiotu "Programowanie systemów rozproszonych", tematy prac inżynierskich i jeżeli są znane, to również magisterskich studentów realizujących projekt.
