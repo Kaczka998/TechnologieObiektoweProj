@@ -1,0 +1,31 @@
+1. Dane osoby wykonującej projekt
+
+Imię i nazwisko: Weronika Wolszczak
+E-mail: weronika.wolszczak@gmail.com
+Grupa: 1ID21B
+
+2. Dane projektu
+
+Temat:  Narzędzia odwzorowania obiektowo - relacyjnego np. Hiberate,
+Oracle TopLink, Microsoft ADO.NET Entity Framework, ActiveRecord lub innego.(nr 4)
+Technologie: Windows, Hibernate, język Java, SQL
+
+3. Harmonogram
+
+1. Zapoznanie z tematem.
+2. Zapoznanie się z literaturą w postaci książki M. Fowler, „Architektura systemów zarządzania 
+   przedsiębiorstwem. Wzorce projektowe”, Helion, 2005.
+3. Przygotowanie części teoretycznej projektu.
+4. Sporządzenie projektu wstępnego aplikacji
+5. Konfiguracja środowiska i ostateczny dobór narzędzi programistycznych.
+6. Implementacja
+7. Testowanie wykonanej aplikacji.
+8. Analiza i wnioski, porównanie praktyki z teorią.
+
+ 
+
+4. Dodatkowe informacje
+
+Temat projektu z przedmiotu ,,Programowanie systemów rozproszonych": łamacz haseł
+Temat pracy inżynierskiej: malowanie liczbami - implementacja gry mobilnej 
+w oparciu o japońskie obrazki logiczne.
