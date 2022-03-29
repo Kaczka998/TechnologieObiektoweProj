@@ -17,8 +17,10 @@ public class BookManager {
     	try {
     	    sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     	} catch (Exception ex) {
+    		ex.printStackTrace();
     	    StandardServiceRegistryBuilder.destroy(registry);
     	}
+    	
     }
  
     protected void exit() {
@@ -28,6 +30,18 @@ public class BookManager {
  
     protected void create() {
         // code to save a book
+    	Book book = new Book(0,null,null,0);
+    	book.setTitle("Effective Java");
+    	book.setAuthor("Joshua Bloch");
+    	book.setPrice(32.59f);
+    	
+    	Session session = sessionFactory.openSession();
+    	session.beginTransaction();
+    	
+    	session.save(book);
+    	
+    	session.getTransaction().commit();
+    	session.close();
     }
  
     protected void read() {
@@ -36,15 +50,21 @@ public class BookManager {
  
     protected void update() {
         // code to modify a book
+    	//session.getTransaction().commit();
+    	//session.close();
     }
  
     protected void delete() {
         // code to remove a book
+    //	session.getTransaction().commit();
+    	//session.close();
     }
  
     public static void main(String[] args) {
         BookManager manager = new BookManager();
         manager.setup();
+        
+        manager.create();
      
         manager.exit();
     }

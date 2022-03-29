@@ -17,11 +17,24 @@ public class Book {
 	 	private long id;
 	    private String title;
 	    private String author;
+	    private float price;
 	    
 	    public Book() {
+	    
+	    }
+	    
+	    public Book(long id, String title, String author, float price) {
 			super();
+			this.id=id;
+			this.title=title;
+			this.author=author;
+			this.price=price;
 			// TODO Auto-generated constructor stub
 		}
+	    
+	    @Id
+	    @Column(name="book_id")
+	    @GeneratedValue(strategy=GenerationType.IDENTITY)
 		public long getId() {
 			return id;
 		}
@@ -46,5 +59,5 @@ public class Book {
 		public void setPrice(float price) {
 			this.price = price;
 		}
-		private float price;
+		
 }
