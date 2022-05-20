@@ -53,6 +53,19 @@ public class BookManager {
 		// code to modify a book
 		// session.getTransaction().commit();
 		// session.close();
+		// code to save a book
+				Book book = new Book();
+				book.setTitle("Shining");
+				book.setAuthor("Stephen King");
+				book.setPrice(35.00f);
+
+				Session session = sessionFactory.openSession();
+				session.beginTransaction();
+
+				session.saveOrUpdate(book);
+
+				session.getTransaction().commit();
+				session.close();
 	}
 
 	protected void delete() {
