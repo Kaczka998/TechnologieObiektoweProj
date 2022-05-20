@@ -32,9 +32,9 @@ public class BookManager {
 	protected void create() {
 		// code to save a book
 		Book book = new Book();
-		book.setTitle("Serlock Holmes");
-		book.setAuthor("sir. A. C. Doyle");
-		book.setPrice(40.00f);
+		book.setTitle("Shining");
+		book.setAuthor("Stephen King");
+		book.setPrice(35.00f);
 
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
