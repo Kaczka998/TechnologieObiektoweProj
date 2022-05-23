@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import java.util.Scanner;
 
 public class BookManager {
 	protected SessionFactory sessionFactory;
@@ -68,18 +69,55 @@ public class BookManager {
 				session.close();
 	}
 
-	protected void delete() {
+	protected void delete(long id) {
 		// code to remove a book
 		// session.getTransaction().commit();
 		// session.close();
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		    Book book ;
+		    book = (Book)session.load(Book.class,id);
+		    session.delete(book);
+
+		    //This makes the pending delete to be done
+		    
+
+//			session.delete(book);
+
+			session.getTransaction().commit();
+			session.close();
+
+		
 	}
 
 	public static void main(String[] args) {
 		BookManager manager = new BookManager();
-		manager.setup();
+		
 
-		manager.create();
+		System.out.println("Wybierz operację: 1. Dodanie pozycji, 2. Usunięcie pozycji");
+		Scanner input = new Scanner(System.in);
+		
+		int number = input.nextInt();
+		
+		switch(number) {
+		case 1:
+			  manager.setup();
+			  manager.create();
+			  manager.exit();
+		break;
+		case 2:
+			System.out.println("Podaj identyfijtor pozycji do usuniecia: ");
+			Scanner in = new Scanner(System.in);
+			String ide=in.next();
+			long id = Long.parseLong(ide);
+		  manager.setup();
+		  manager.delete(id);
+		  manager.exit();
+		  break;
+		}
 
-		manager.exit();
+	
 	}
 }
