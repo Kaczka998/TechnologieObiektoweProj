@@ -1,11 +1,13 @@
 package net.codejava.hibernate;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import java.util.Scanner;
+
 
 public class BookManager {
 	protected SessionFactory sessionFactory;
@@ -30,12 +32,12 @@ public class BookManager {
 		sessionFactory.close();
 	}
 
-	protected void create() {
+	protected void create(String a, String t, float p) {
 		// code to save a book
 		Book book = new Book();
-		book.setTitle("Shining");
-		book.setAuthor("Stephen King");
-		book.setPrice(35.00f);
+		book.setTitle(t);
+		book.setAuthor(a);
+		book.setPrice(p);
 
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -46,19 +48,40 @@ public class BookManager {
 		session.close();
 	}
 
-	protected void read() {
+	protected List<Book> read() {
 		// code to get a book
+		List<Book> book = null;
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		book = session.createQuery("from Book").list();
+		session.getTransaction().commit();
+		//session.close();
+		
+		return book;
+	}
+	protected Book readByName(long id) {
+		// code to get a book
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Book book = null;
+		
+		book = session.get(Book.class, id);
+		session.getTransaction().commit();
+		session.close();
+		
+		return book;
 	}
 
-	protected void update() {
+	protected void update(String title, float p) {
 		// code to modify a book
 		// session.getTransaction().commit();
 		// session.close();
 		// code to save a book
 				Book book = new Book();
-				book.setTitle("Shining");
-				book.setAuthor("Stephen King");
-				book.setPrice(35.00f);
+				String t= book.getTitle();
+				if(t==title)
+				book.setPrice(p);
 
 				Session session = sessionFactory.openSession();
 				session.beginTransaction();
@@ -92,32 +115,5 @@ public class BookManager {
 		
 	}
 
-	public static void main(String[] args) {
-		BookManager manager = new BookManager();
-		
-
-		System.out.println("Wybierz operację: 1. Dodanie pozycji, 2. Usunięcie pozycji");
-		Scanner input = new Scanner(System.in);
-		
-		int number = input.nextInt();
-		
-		switch(number) {
-		case 1:
-			  manager.setup();
-			  manager.create();
-			  manager.exit();
-		break;
-		case 2:
-			System.out.println("Podaj identyfijtor pozycji do usuniecia: ");
-			Scanner in = new Scanner(System.in);
-			String ide=in.next();
-			long id = Long.parseLong(ide);
-		  manager.setup();
-		  manager.delete(id);
-		  manager.exit();
-		  break;
-		}
-
 	
-	}
 }
